@@ -11,9 +11,22 @@ object gimenez {
 
 object galvan {
   var property sueldo = 15000
+  var dinero = 0
+  var deuda = 0
+  
+  method dinero() = dinero
+  
+  method deuda() = deuda
   
   method cobrar() {
-    
+    const pago = sueldo.min(deuda)
+    dinero += sueldo - pago
+    deuda -= pago
+  }
+  
+  method gastar(cantidad) {
+    deuda += (cantidad - dinero).max(0)
+    dinero = (dinero - cantidad).max(0)
   }
 }
 
